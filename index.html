@@ -10,10 +10,10 @@
 <meta property="og:title" content="Navodaya &amp; Anupama — Wedding Invitation">
 <meta property="og:description" content="Join us for the celebrations — Engagement &amp; Tilak on 29 Nov and the Wedding on 5 Dec 2026, at The Continental By Red Carpet, Ghaziabad.">
 <meta property="og:url" content="https://nueegit.github.io/WEDDING/">
-<meta property="og:image" content="https://nueegit.github.io/WEDDING/preview.png">
+<meta property="og:image" content="https://nueegit.github.io/WEDDING/preview.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Navodaya and Anupama wedding invitation">
+<meta property="og:image:type" content="image/jpeg">
 <meta name="twitter:card" content="summary_large_image">
 <title>Navodaya &amp; Anupama</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -36,6 +36,8 @@
     --line:rgba(216,177,106,.42);
     --line-soft:rgba(216,177,106,.2);
     --toran-h:104px;
+    --mandala-ink:#e6c688;
+    --dust:#f3e0b0;
     --f-display:'Cormorant Garamond', 'Times New Roman', Georgia, serif;
     --f-body:'EB Garamond', Georgia, 'Times New Roman', serif;
     --f-caps:'Cinzel', 'Trajan Pro', Georgia, serif;
@@ -532,6 +534,89 @@
   #rsvpSink{ display:none; }
   .rsvp-by{ margin-top:1.2rem; font-style:italic; font-size:.95rem; color:var(--gold-pale); opacity:.85; }
 
+
+  /* ============================================================
+     BRIDE'S SIDE — light theme (html class="light")
+     Same layout, inverted ground: ivory page, maroon ink,
+     and the invitation card flipped to deep maroon.
+     ============================================================ */
+  :root.light{
+    --night:#fdf7ea;
+    --maroon:#f7ecd8;
+    --wine:#f3e2c6;
+    --velvet:#f9eed9;
+    --gold:#a67c37;
+    --gold-deep:#7d5c26;
+    --gold-pale:#7a1c38;
+    --ivory:#43101f;
+    --line:rgba(122,28,56,.3);
+    --line-soft:rgba(122,28,56,.15);
+    --mandala-ink:#b08a45;
+    --dust:#c9a05a;
+    --jaali:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 48 48'%3E%3Cg fill='none' stroke='%237a1c38' stroke-opacity='.085' stroke-width='1'%3E%3Ccircle cx='0' cy='0' r='20'/%3E%3Ccircle cx='48' cy='0' r='20'/%3E%3Ccircle cx='0' cy='48' r='20'/%3E%3Ccircle cx='48' cy='48' r='20'/%3E%3Ccircle cx='24' cy='24' r='20'/%3E%3C/g%3E%3Ccircle cx='24' cy='24' r='1.2' fill='%237a1c38' fill-opacity='.16'/%3E%3C/svg%3E");
+  }
+  .light body{
+    background-image:
+      var(--jaali),
+      radial-gradient(130% 70% at 50% 0%, #fffaf0 0%, #faf0dc 26%, #f4e4c8 60%, #eedcb8 100%);
+  }
+  .light .door-l{ background-image:var(--jaali), linear-gradient(90deg, #eedcb8, #fffaf0 60%, #f7ecd8); }
+  .light .door-r{ background-image:var(--jaali), linear-gradient(270deg, #eedcb8, #fffaf0 60%, #f7ecd8); }
+  .light .door{ box-shadow:inset 0 0 90px rgba(122,28,56,.12); }
+  .light .seal{
+    color:#f3e0b0;
+    background:radial-gradient(circle at 34% 28%, #a8385c 0%, #8f2146 30%, #6e1733 70%, #4a0f22 100%);
+    box-shadow:0 22px 50px rgba(74,15,34,.35), inset 0 0 0 6px rgba(216,177,106,.5), inset 0 0 0 8px rgba(74,15,34,.5);
+  }
+  .light .seal::before{ border-color:rgba(243,224,176,.5); }
+  .light .gate-btn, .light .submit, .light .rsvp-cta, .light .btn{
+    background:linear-gradient(180deg, #8f2146, #6e1733); color:#fdf7ea; border-color:#6e1733;
+  }
+  .light .btn-ghost{ background:transparent; color:#6e1733; border-color:#a67c37; }
+  .light .btn-ghost:hover{ background:rgba(110,23,51,.08); }
+  .light .music-btn{ background:rgba(253,247,234,.86); color:#6e1733; }
+  .light .foil{
+    background-image:linear-gradient(105deg, #8f2146 0%, #a67c37 22%, #6e1733 42%, #b8893f 52%, #6e1733 68%, #a67c37 84%, #8f2146 100%);
+  }
+  .light .names{ filter:drop-shadow(0 2px 8px rgba(74,15,34,.2)); }
+
+  /* the invitation card inverts: maroon ground, gold type */
+  .light .paper{
+    background:radial-gradient(120% 100% at 50% 35%, #5c1329 0%, #3a0a19 68%, #250711 100%);
+    box-shadow:0 30px 60px -26px rgba(74,15,34,.55), 0 0 0 1px rgba(166,124,55,.55);
+  }
+  .light .paper::before{ border-color:rgba(216,177,106,.6); }
+  .light .paper::after{ border-color:rgba(243,224,176,.22); }
+  .light .paper-lotus{ color:#d8b16a; }
+  .light .paper-eyebrow{ color:#d8b16a; }
+  .light .paper-title{ color:#f3e0b0; }
+  .light .paper-lead{ color:#f4e6cc; }
+  .light .pc-name{ color:#f3e0b0; }
+  .light .pc-par{ color:#e2ceac; }
+  .light .pc-sang{ color:#d8b16a; }
+  .light .paper-rule{ background:linear-gradient(90deg, transparent, rgba(216,177,106,.85), transparent); }
+  .light .paper-en{ color:#efdfc2; }
+  .light .paper-en strong{ color:#f3e0b0; }
+
+  .light .verse{ background:linear-gradient(180deg, rgba(255,250,240,.9), rgba(244,228,200,.92)); }
+  .light .verse-hi{ color:#43101f; }
+  .light .verse-tr{ color:#7a1c38; }
+  .light .verse-en{ color:#5a2a36; }
+  .light .cnr{ border-color:#a67c37; }
+  .light .tile{ background:linear-gradient(180deg, #fffaf0, #f5e7cd); }
+  .light .tile .num{ color:#6e1733; }
+  .light .event{ background:linear-gradient(180deg, #fffaf0, #f6e9d2 62%); }
+  .light .event-name, .light .family .who{ color:#6e1733; }
+  .light .venue-hall{ color:#8f2146; }
+  .light .family{ background:linear-gradient(180deg, #fffaf0, #f6e9d2); }
+  .light .rsvp-form, .light .rsvp-done{
+    background:radial-gradient(120% 100% at 50% 20%, #fffdf7 0%, #fbf2e1 72%, #f4e6cc 100%);
+    box-shadow:0 22px 44px -26px rgba(74,15,34,.45), 0 0 0 1px rgba(166,124,55,.55);
+  }
+  .light .rsvp-form input[type="text"], .light .rsvp-form input[type="tel"],
+  .light .rsvp-form select, .light .rsvp-form textarea{ background:rgba(255,255,255,.85); }
+  .light .check{ background:rgba(255,255,255,.75); }
+
   /* ============ footer ============ */
   footer{ position:relative; z-index:1; text-align:center; padding-block:2.4rem 7rem; }
   .shubh{ font-family:var(--f-hi); font-size:clamp(2.3rem, 9vw, 3.2rem); line-height:1.35; }
@@ -721,7 +806,7 @@
       <article class="event arch reveal">
         <svg class="event-icon" viewBox="0 0 54 54" aria-hidden="true">
           <path class="flame" d="M27 9 C33 17 33.5 25 27 30 C20.5 25 21 17 27 9Z" fill="currentColor"/>
-          <path d="M27 18.5 C29.6 22 29.8 25.5 27 27.8 C24.2 25.5 24.4 22 27 18.5Z" fill="#3a0a19"/>
+          <path d="M27 18.5 C29.6 22 29.8 25.5 27 27.8 C24.2 25.5 24.4 22 27 18.5Z" fill="var(--maroon)"/>
           <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round">
             <path d="M8 32 C11 43 43 43 46 32 Z"/>
             <path d="M20 45 H34"/>
@@ -832,8 +917,11 @@
         <label class="lbl" for="rsvpNote">A note for the couple</label>
         <textarea id="rsvpNote" name="entry.926698454" placeholder="Blessings, wishes, or a song request..."></textarea>
       </div>
+      <!-- which side invited this guest; filled in automatically, the guest never sees it -->
+      <input type="hidden" name="entry.1481034745" value="Groom's side">
       <input type="hidden" name="fvv" value="1">
       <input type="hidden" name="pageHistory" value="0">
+
       <p class="form-err" id="rsvpErr" hidden></p>
       <button class="submit" id="rsvpSend" type="submit">Send RSVP</button>
       <p class="form-note">Kindly respond by 15 November 2026</p>
@@ -1207,7 +1295,8 @@
     x.setTransform(DPR, 0, 0, DPR, 0, 0);
     x.clearRect(0, 0, S, S);
     x.translate(S / 2, S / 2);
-    x.strokeStyle = '#e6c688'; x.fillStyle = '#e6c688'; x.lineWidth = 1;
+    var mInk = getComputedStyle(document.documentElement).getPropertyValue('--mandala-ink').trim() || '#e6c688';
+    x.strokeStyle = mInk; x.fillStyle = mInk; x.lineWidth = 1;
     var R = S / 2 - 2;
     function ring(rr){ x.beginPath(); x.arc(0, 0, rr, 0, 6.2832); x.stroke(); }
     function petals(count, r0, r1, w, off){
@@ -1253,6 +1342,7 @@
   var px = pc.getContext && pc.getContext('2d');
   var PW = 0, PH = 0, petalsArr = [], dust = [], raf = null;
   var PCOL = ['#ec8a1e', '#f6b733', '#e0603a', '#d8b16a', '#c7334f', '#f29a3a'];
+  var DUST = getComputedStyle(document.documentElement).getPropertyValue('--dust').trim() || '#f3e0b0';
 
   function sizePetals(){
     PW = window.innerWidth; PH = window.innerHeight;
@@ -1289,7 +1379,7 @@
       var d = dust[j];
       d.y -= 0.08; if (d.y < -5){ d.y = PH + 5; d.x = Math.random() * PW; }
       px.globalAlpha = 0.12 + 0.5 * (0.5 + 0.5 * Math.sin(t * d.sp + d.ph));
-      px.fillStyle = '#f3e0b0';
+      px.fillStyle = DUST;
       px.beginPath(); px.arc(d.x, d.y, d.r, 0, 6.2832); px.fill();
     }
     for (var i = 0; i < petalsArr.length; i++){
