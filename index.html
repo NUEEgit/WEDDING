@@ -463,6 +463,63 @@
   }
   .rsvp-cta:hover{ transform:translateY(-2px); filter:brightness(1.06); }
   .rsvp-cta svg{ width:19px; height:19px; }
+  .rsvp-form, .rsvp-done{
+    position:relative; text-align:left;
+    max-width:520px; margin:1.9rem auto 0;
+    padding:2rem 1.5rem 1.8rem;
+    background:radial-gradient(120% 100% at 50% 20%, #fdf8ec 0%, #f7eacf 70%, #ead3aa 100%);
+    color:var(--ink); border-radius:3px;
+    box-shadow:0 30px 60px -24px rgba(0,0,0,.7), 0 0 0 1px rgba(166,124,55,.6);
+  }
+  .rsvp-form::before, .rsvp-done::before{
+    content:""; position:absolute; inset:9px; border:1px solid rgba(166,124,55,.6); pointer-events:none; border-radius:2px;
+  }
+  .field{ position:relative; margin-top:1.15rem; }
+  .field:first-of-type{ margin-top:0; }
+  .lbl{
+    display:block; margin-bottom:.45rem;
+    font-family:var(--f-caps); font-size:.62rem; letter-spacing:.2em; text-transform:uppercase;
+    color:var(--wine);
+  }
+  .req{ color:#b3203a; }
+  .rsvp-form input[type="text"], .rsvp-form input[type="tel"], .rsvp-form select, .rsvp-form textarea{
+    width:100%; font-family:var(--f-body); font-size:1rem; color:var(--ink);
+    background:rgba(255,255,255,.72);
+    border:1px solid rgba(166,124,55,.55); border-radius:7px;
+    padding:.75em .9em;
+  }
+  .rsvp-form textarea{ min-height:92px; resize:vertical; }
+  .rsvp-form input:focus, .rsvp-form select:focus, .rsvp-form textarea:focus{
+    outline:none; border-color:var(--gold-deep); box-shadow:0 0 0 3px rgba(166,124,55,.2);
+  }
+  .rsvp-form ::placeholder{ color:#9b7a80; }
+  .checks{ display:flex; flex-wrap:wrap; gap:10px; }
+  .check{
+    display:inline-flex; align-items:center; gap:.55em;
+    padding:.6em 1.1em; border-radius:999px; cursor:pointer;
+    border:1px solid rgba(166,124,55,.55); background:rgba(255,255,255,.62);
+    font-size:.96rem; color:var(--ink);
+    transition:background .2s ease, border-color .2s ease;
+  }
+  .check input{ width:16px; height:16px; accent-color:var(--wine); }
+  .check.on{ background:rgba(143,33,70,.12); border-color:var(--wine); }
+  .form-err{ margin-top:.9rem; font-size:.88rem; color:#a3182f; }
+  .submit{
+    width:100%; margin-top:1.5rem; cursor:pointer; border:0;
+    padding:1.05em 1.2em; border-radius:999px;
+    font-family:var(--f-caps); font-size:.76rem; letter-spacing:.18em; text-transform:uppercase;
+    color:var(--gold-pale); background:linear-gradient(180deg, var(--velvet), var(--wine));
+    box-shadow:0 12px 26px -12px rgba(0,0,0,.7);
+    transition:filter .2s ease, transform .2s ease;
+  }
+  .submit:hover{ filter:brightness(1.1); transform:translateY(-1px); }
+  .submit[disabled]{ opacity:.7; cursor:default; transform:none; }
+  .form-note{ margin-top:1rem; text-align:center; font-style:italic; font-size:.9rem; color:#6a3a45; }
+  .rsvp-done{ text-align:center; }
+  .done-title{ font-family:var(--f-display); font-weight:500; font-size:1.9rem; color:var(--wine); }
+  .done-text{ margin-top:.7rem; font-size:.98rem; line-height:1.6; color:#5a2a36; }
+  .done-text a{ color:var(--wine); }
+  #rsvpSink{ display:none; }
   .rsvp-by{ margin-top:1.2rem; font-style:italic; font-size:.95rem; color:var(--gold-pale); opacity:.85; }
 
   /* ============ footer ============ */
@@ -731,10 +788,52 @@
       <h2 class="title">We await your presence</h2>
     </div>
     <p class="rsvp-note">Your presence means the world to us. Please fill in the form below.</p>
-    <div class="rsvp-embed">
-      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSei3W58204SEMqOkCiMTmjj7IWhi0ymwWtWKmUVtcRJ7h3MLQ/viewform?embedded=true" title="RSVP form" loading="lazy">Loading the RSVP form…</iframe>
+
+    <form class="rsvp-form" id="rsvpForm" action="https://docs.google.com/forms/d/e/1FAIpQLSei3W58204SEMqOkCiMTmjj7IWhi0ymwWtWKmUVtcRJ7h3MLQ/formResponse" method="POST" target="rsvpSink" novalidate>
+      <div class="field">
+        <label class="lbl" for="rsvpName">Your name <span class="req">*</span></label>
+        <input id="rsvpName" name="entry.50699680" type="text" autocomplete="name" placeholder="Full name">
+      </div>
+      <div class="field">
+        <label class="lbl" for="rsvpPhone">Phone number <span class="req">*</span></label>
+        <input id="rsvpPhone" name="entry.1564516298" type="tel" autocomplete="tel" placeholder="Mobile number">
+      </div>
+      <div class="field">
+        <label class="lbl" for="rsvpGuests">Number of guests</label>
+        <select id="rsvpGuests" name="entry.2074227250">
+          <option>1 person</option>
+          <option>2 person</option>
+          <option>3 person</option>
+          <option>4 person</option>
+          <option>5 person</option>
+          <option>6 person</option>
+          <option>7 person</option>
+          <option>8 person</option>
+        </select>
+      </div>
+      <div class="field">
+        <span class="lbl">Events you'll attend <span class="req">*</span></span>
+        <div class="checks">
+          <label class="check" for="rsvpEng"><input type="checkbox" id="rsvpEng" name="entry.1152418104" value="Engagement &amp; Tilak"> Engagement &amp; Tilak</label>
+          <label class="check" for="rsvpWed"><input type="checkbox" id="rsvpWed" name="entry.1152418104" value="Wedding"> Wedding</label>
+        </div>
+      </div>
+      <div class="field">
+        <label class="lbl" for="rsvpNote">A note for the couple</label>
+        <textarea id="rsvpNote" name="entry.926698454" placeholder="Blessings, wishes, or a song request..."></textarea>
+      </div>
+      <input type="hidden" name="fvv" value="1">
+      <input type="hidden" name="pageHistory" value="0">
+      <p class="form-err" id="rsvpErr" hidden></p>
+      <button class="submit" id="rsvpSend" type="submit">Send RSVP</button>
+      <p class="form-note">Kindly respond by 15 November 2026</p>
+    </form>
+    <iframe name="rsvpSink" id="rsvpSink" title="RSVP submission" aria-hidden="true" tabindex="-1"></iframe>
+
+    <div class="rsvp-done" id="rsvpDone" hidden>
+      <p class="done-title">Thank you</p>
+      <p class="done-text">Your RSVP has reached us. We can't wait to celebrate with you.<br><br>If anything needs changing, just <a href="https://docs.google.com/forms/d/e/1FAIpQLSei3W58204SEMqOkCiMTmjj7IWhi0ymwWtWKmUVtcRJ7h3MLQ/viewform" target="_blank" rel="noopener">send it again here</a>.</p>
     </div>
-    <p class="rsvp-by">Kindly respond by 15 November 2026 &nbsp;·&nbsp; <a href="https://docs.google.com/forms/d/e/1FAIpQLSei3W58204SEMqOkCiMTmjj7IWhi0ymwWtWKmUVtcRJ7h3MLQ/viewform" target="_blank" rel="noopener" style="color:var(--gold);">open the form in a new tab</a></p>
 
     <div class="darshan">
       <p class="fam">Awaiting your presence,<br>The Arya &amp; Mishra families</p>
@@ -943,6 +1042,48 @@
   }
   tick();
   setInterval(tick, 1000);
+
+  /* ===================== RSVP form -> Google Form =====================
+     The form POSTs straight into the couple's Google Form (and therefore the
+     linked Google Sheet) through a hidden iframe, so the guest never leaves
+     the invitation. Field names are the Google Form's own entry IDs. */
+  var form = document.getElementById('rsvpForm');
+  if (form){
+    var errBox = document.getElementById('rsvpErr');
+    var doneBox = document.getElementById('rsvpDone');
+    var sink = document.getElementById('rsvpSink');
+    var sendBtn = document.getElementById('rsvpSend');
+
+    [].slice.call(form.querySelectorAll('.check input')).forEach(function(box){
+      function sync(){ box.parentNode.classList.toggle('on', box.checked); }
+      box.addEventListener('change', sync);
+      sync();
+    });
+
+    function showError(msg){ errBox.textContent = msg; errBox.hidden = false; }
+
+    form.addEventListener('submit', function(e){
+      var name = document.getElementById('rsvpName');
+      var phone = document.getElementById('rsvpPhone');
+      if (!name.value.trim()){ e.preventDefault(); showError('Please tell us your name.'); name.focus(); return; }
+      if (!phone.value.trim()){ e.preventDefault(); showError('Please add a phone number so we can reach you.'); phone.focus(); return; }
+      if (!form.querySelectorAll('.check input:checked').length){ e.preventDefault(); showError("Please pick at least one event you'll attend."); return; }
+      errBox.hidden = true;
+      sendBtn.disabled = true;
+      sendBtn.textContent = 'Sending\u2026';
+      var settled = false;
+      function finish(){
+        if (settled) return;
+        settled = true;
+        form.hidden = true;
+        doneBox.hidden = false;
+        try { doneBox.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'center' }); } catch (err) {}
+      }
+      if (sink) sink.addEventListener('load', finish, { once: true });
+      setTimeout(finish, 2500);
+      /* the form's own POST continues into the hidden iframe */
+    });
+  }
 
   /* ===================== marigold toran ===================== */
   var toran = document.getElementById('toran');
